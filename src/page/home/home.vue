@@ -1,7 +1,7 @@
 <template>
   <div>
     home
-    dingjuan1111111111
+    dingjuan
   </div>
 </template>
 
