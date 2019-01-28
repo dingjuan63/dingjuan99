@@ -7,7 +7,7 @@ const login = r => require.ensure([], () => r(require('../page/login/login')), '
 const profile = r => require.ensure([], () => r(require('../page/profile/profile')), 'profile')
 const info = r => require.ensure([], () => r(require('../page/profile/children/info')), 'info')
 const shop = r => require.ensure([], () => r(require('../page/shop/shop')), 'shop')
-
+const foodDetail = r => require.ensure([], () => r(require('../page/shop/children/foodDetail')), 'foodDetail')
 
 
 
@@ -40,17 +40,19 @@ export default [{
     {
       path: '/shop',
       component: shop,
-      // children: [{
-      //   path: 'foodDetail', //食品详情页
-      //   component: foodDetail,
-      // }, {
+      children: [{
+        path: 'foodDetail', //食品详情页
+        component: foodDetail,
+      },
+      //   {
       //   path: 'shopDetail', //商铺详情页
       //   component: shopDetail,
       //   children: [{
       //     path: 'shopSafe', //商铺安全认证页
       //     component: shopSafe,
       //   }, ]
-      // }]
+      // }
+      ]
     },
     //登录注册页
     {

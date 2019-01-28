@@ -1,6 +1,6 @@
 <template>
-  <div>111</div>
- <!-- <div>
+
+  <div>
     <section v-if="!showLoading" class="shop_container">
       <nav class="goback" @click="goback">
         <svg width="4rem" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -313,7 +313,7 @@
     <transition name="router-slid" mode="out-in">
       <router-view></router-view>
     </transition>
-  </div>-->
+  </div>
 
 </template>
 
@@ -486,6 +486,7 @@
             })
           })
         },
+
         //控制活动详情页的显示隐藏
         showActivitiesFun(){
           this.showActivities = !this.showActivities;
