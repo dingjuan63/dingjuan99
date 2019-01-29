@@ -8,8 +8,9 @@ const profile = r => require.ensure([], () => r(require('../page/profile/profile
 const info = r => require.ensure([], () => r(require('../page/profile/children/info')), 'info')
 const shop = r => require.ensure([], () => r(require('../page/shop/shop')), 'shop')
 const foodDetail = r => require.ensure([], () => r(require('../page/shop/children/foodDetail')), 'foodDetail')
-
-
+const shopDetail = r => require.ensure([], () => r(require('../page/shop/children/shopDetail')), 'shopDetail')
+const shopSafe = r => require.ensure([], () => r(require('../page/shop/children/children/shopSafe')), 'shopSafe')
+const search = r => require.ensure([], () => r(require('../page/search/search')), 'search')
 
 export default [{
   path: '/',
@@ -36,6 +37,11 @@ export default [{
       component: msite,
       meta: { keepAlive: true },
     },
+    //搜索页
+    {
+      path: '/search/:geohash',
+      component: search
+    },
     //商铺详情页
     {
       path: '/shop',
@@ -44,14 +50,14 @@ export default [{
         path: 'foodDetail', //食品详情页
         component: foodDetail,
       },
-      //   {
-      //   path: 'shopDetail', //商铺详情页
-      //   component: shopDetail,
-      //   children: [{
-      //     path: 'shopSafe', //商铺安全认证页
-      //     component: shopSafe,
-      //   }, ]
-      // }
+        {
+        path: 'shopDetail', //商铺详情页
+        component: shopDetail,
+        children: [{
+          path: 'shopSafe', //商铺安全认证页
+          component: shopSafe,
+        }, ]
+      }
       ]
     },
     //登录注册页
