@@ -22,7 +22,12 @@ const vipcard = r => require.ensure([], () => r(require('../page/vipcard/vipcard
 const invoiceRecord = r => require.ensure([], () => r(require('../page/vipcard/children/invoiceRecord')), 'invoiceRecord')
 const useCart = r => require.ensure([], () => r(require('../page/vipcard/children/useCart')), 'useCart')
 const vipDescription = r => require.ensure([], () => r(require('../page/vipcard/children/vipDescription')), 'vipDescription')
-
+const service = r => require.ensure([], () => r(require('../page/service/service')), 'service')
+const questionDetail = r => require.ensure([], () => r(require('../page/service/children/questionDetail')), 'questionDetail')
+const find = r => require.ensure([], () => r(require('../page/find/find')), 'find')
+const download = r => require.ensure([], () => r(require('../page/download/download')), 'download')
+const balance = r => require.ensure([], () => r(require('../page/balance/balance')), 'balance')
+const balanceDetail = r => require.ensure([], () => r(require('../page/balance/children/detail')), 'balanceDetail')
 
 export default [{
   path: '/',
@@ -103,7 +108,10 @@ export default [{
             }]
           }]
         }]
-      }]
+      }, {
+        path: 'service', //服务中心
+        component: service,
+      },]
     },
     //订单列表页
     {
@@ -113,6 +121,34 @@ export default [{
       //   path: 'orderDetail', //订单详情页
       //   component: orderDetail,
       // }, ]
+    },
+    //发现页
+    {
+      path: '/find',
+      component: find
+    },
+    //下载页
+    {
+      path: '/download',
+      component: download
+    },
+    //服务中心
+    {
+      path: '/service',
+      component: service,
+      children: [{
+        path: 'questionDetail', //订单详情页
+        component: questionDetail,
+      }, ]
+    },
+    //余额
+    {
+      path: 'balance',
+      component: balance,
+      children: [{
+        path: 'detail', //余额说明
+        component: balanceDetail,
+      }, ]
     },
     //修改密码页
     {
