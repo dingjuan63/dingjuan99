@@ -14,6 +14,14 @@ const addDetail = r => require.ensure([], () => r(require('../page/profile/child
 const shop = r => require.ensure([], () => r(require('../page/shop/shop')), 'shop')
 const foodDetail = r => require.ensure([], () => r(require('../page/shop/children/foodDetail')), 'foodDetail')
 const shopDetail = r => require.ensure([], () => r(require('../page/shop/children/shopDetail')), 'shopDetail')
+const confirmOrder = r => require.ensure([], () => r(require('../page/confirmOrder/confirmOrder')), 'confirmOrder')
+const remark = r => require.ensure([], () => r(require('../page/confirmOrder/children/remark')), 'remark')
+const payment = r => require.ensure([], () => r(require('../page/confirmOrder/children/payment')), 'payment')
+const userValidation = r => require.ensure([], () => r(require('../page/confirmOrder/children/userValidation')), 'userValidation')
+const invoice = r => require.ensure([], () => r(require('../page/confirmOrder/children/invoice')), 'invoice')
+const chooseAddress = r => require.ensure([], () => r(require('../page/confirmOrder/children/chooseAddress')), 'chooseAddress')
+const addAddress = r => require.ensure([], () => r(require('../page/confirmOrder/children/children/addAddress')), 'addAddress')
+const searchAddress = r => require.ensure([], () => r(require('../page/confirmOrder/children/children/children/searchAddress')), 'searchAddress')
 const shopSafe = r => require.ensure([], () => r(require('../page/shop/children/children/shopSafe')), 'shopSafe')
 const search = r => require.ensure([], () => r(require('../page/search/search')), 'search')
 const food = r => require.ensure([], () => r(require('../page/food/food')), 'food')
@@ -28,6 +36,14 @@ const find = r => require.ensure([], () => r(require('../page/find/find')), 'fin
 const download = r => require.ensure([], () => r(require('../page/download/download')), 'download')
 const balance = r => require.ensure([], () => r(require('../page/balance/balance')), 'balance')
 const balanceDetail = r => require.ensure([], () => r(require('../page/balance/children/detail')), 'balanceDetail')
+const benefit = r => require.ensure([], () => r(require('../page/benefit/benefit')), 'benefit')
+const coupon = r => require.ensure([], () => r(require('../page/benefit/children/coupon')), 'coupon')
+const hbDescription = r => require.ensure([], () => r(require('../page/benefit/children/hbDescription')), 'hbDescription')
+const hbHistory = r => require.ensure([], () => r(require('../page/benefit/children/hbHistory')), 'hbHistory')
+const exchange = r => require.ensure([], () => r(require('../page/benefit/children/exchange')), 'exchange')
+const commend = r => require.ensure([], () => r(require('../page/benefit/children/commend')), 'commend')
+const points = r => require.ensure([], () => r(require('../page/points/points')), 'points')
+const pointsDetail = r => require.ensure([], () => r(require('../page/points/children/detail')), 'pointsDetail')
 
 export default [{
   path: '/',
@@ -81,6 +97,35 @@ export default [{
         }, ]
       }
       ]
+    },
+    //确认订单页
+    {
+      path: '/confirmOrder',
+      component: confirmOrder,
+      children: [{
+        path: 'remark', //订单备注
+        component: remark,
+      }, {
+        path: 'invoice', //发票抬头
+        component: invoice,
+      }, {
+        path: 'payment', //付款页面
+        component: payment,
+      }, {
+        path: 'userValidation', //用户验证
+        component: userValidation,
+      }, {
+        path: 'chooseAddress', //选择地址
+        component: chooseAddress,
+        children: [{
+          path: 'addAddress', //添加地址
+          component: addAddress,
+          children: [{
+            path: 'searchAddress', //搜索地址
+            component: searchAddress,
+          }]
+        }, ]
+      }, ]
     },
     //登录注册页
     {
@@ -169,6 +214,36 @@ export default [{
         path: 'vipDescription', //会员说明
         component: vipDescription,
       },]
+    },
+    //我的优惠页
+    {
+      path: 'benefit',
+      component: benefit,
+      children: [{
+        path: 'coupon', //代金券说明
+        component: coupon,
+      }, {
+        path: 'hbDescription', //红包说明
+        component: hbDescription,
+      }, {
+        path: 'hbHistory', //历史红包
+        component: hbHistory,
+      }, {
+        path: 'exchange', //兑换红包
+        component: exchange,
+      }, {
+        path: 'commend', //推荐有奖
+        component: commend,
+      },]
+    },
+    //我的积分页
+    {
+      path: 'points',
+      component: points,
+      children: [{
+        path: 'detail', //积分说明
+        component: pointsDetail,
+      }, ]
     },
   ]
 }]
